@@ -1,4 +1,5 @@
 var pengguna = require('../controllers/pengguna');
+var anggotaPengguna = require('../controllers/anggotaPengguna');
  
 module.exports = {
   configure: function(app) {
@@ -9,7 +10,12 @@ module.exports = {
     app.route('/pengguna').get(pengguna.get);
     app.route('/pengguna/:id').get(pengguna.select);
     app.route('/pengguna/:id').put(pengguna.update);
-    // app.route('/pengguna').delete(pengguna.delete);
+
+    app.route('/anggotaPengguna').post(anggotaPengguna.create);
+    app.route('/anggotaPengguna/all/:id').get(anggotaPengguna.get);
+    app.route('/anggotaPengguna/:id').get(anggotaPengguna.select);   
+    app.route('/anggotaPengguna/:id').put(anggotaPengguna.update);
+    app.route('/anggotaPengguna/:id').delete(anggotaPengguna.delete);
     
     // handle get not found
     app.get('*', function(req, res){

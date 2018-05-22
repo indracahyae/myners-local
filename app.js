@@ -4,13 +4,13 @@ var bodyParser = require('body-parser');
 // var multer = require('multer');
 // var upload = multer();
  
-var routes = require('./routes/pengguna');
+var routes = require('./routes/routes');
 var connection = require('./config/db');
 
 var app = express();
 
 connection.init();
-app.use(logger('dev'));
+// app.use(logger('dev'));
 
 //request JSON data
 app.use(bodyParser.json());

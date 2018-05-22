@@ -19,7 +19,7 @@ function AnggotaPenggunaController() {
   this.get = function(req,res,next) {
      connection.acquire(function(err,con){
         if (err) throw err;
-          con.query('SELECT * FROM anggota_pengguna', function(err,data){
+          con.query(`SELECT * FROM anggota_pengguna where id_pengguna=${req.params.id}`, function(err,data){
             con.release();
             if(err)
                return res.json({status:false,message:err,result:[]});
@@ -33,7 +33,7 @@ function AnggotaPenggunaController() {
   this.select = function(req,res){
     connection.acquire(function(err,con){
         if (err) throw err;
-          con.query(`SELECT * FROM pengguna where pgn_id=${req.params.id}`, function(err,data){
+          con.query(`SELECT * FROM anggota_pengguna where id=${req.params.id}`, function(err,data){
             con.release();
             if(err)
                return res.json({status:'400',message: 'Failed',result:[]});
@@ -47,7 +47,7 @@ function AnggotaPenggunaController() {
   this.update = function(req,res){
     connection.acquire(function(err,con){
         if (err) throw err;
-          con.query(`UPDATE pengguna SET ? WHERE pgn_id=?`,[req.body, req.params.id], function(err,data){
+          con.query(`UPDATE anggota_pengguna SET ? WHERE id=?`,[req.body, req.params.id], function(err,data){
                 con.release();
                 if(err)
                 return res.json({status:'400',message: 'Failed, tyr again',result:[]});
@@ -56,6 +56,20 @@ function AnggotaPenggunaController() {
    
           });
      }); 
+  }
+
+  this.delete = function(req,res){
+    connection.acquire(function(err,con){
+        if (err) throw err;
+          con.query(`DELETE FROM anggota_pengguna where id=${req.params.id}`, function(err,data){
+            con.release();
+            if(err)
+               return res.json({status:'400',message: 'Failed',result:[]});
+               
+            return res.json({status:true,message:'success',result:data});
+   
+          });
+     });
   }
 
 }
