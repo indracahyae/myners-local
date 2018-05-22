@@ -1,0 +1,29 @@
+{
+  "name": "myners",
+  "version": "1.0.0",
+  "description": "aplikasi perawat",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/indracahyae/myners-local.git"
+  },
+  "author": "indra cahya e",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/indracahyae/myners-local/issues"
+  },
+  "homepage": "https://github.com/indracahyae/myners-local#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  }
+}
